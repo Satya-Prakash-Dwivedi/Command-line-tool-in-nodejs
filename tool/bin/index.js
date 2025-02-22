@@ -1,29 +1,27 @@
 #!/usr/bin/env node
-const arg = require('arg');
+import arg from 'arg';
+import chalk from 'chalk';
+import getConfig from '../src/config/config-mgr.js';
+import start from '../src/commands/start.js';
 
 try {
-     const args = arg({
-          '--start' : Boolean,
-          '--build' : Boolean,
-     });
-     
-     // console.log(args);
-     
-     if(args['--start']){
-          console.log("Starting the app");
-     }   
-} catch (error) {
-     console.log(error.message);
-     console.log();
-     usage();
+  const args = arg({
+    '--start': Boolean,
+    '--build': Boolean,
+  });
+
+  if (args['--start']) {
+    const config = getConfig();
+    start(config);
+  }
+} catch (e) {
+  console.log(chalk.yellow(e.message));
+  console.log();
+  usage();
 }
 
-function usage(){
-     console.log(`tool [CMD]
-     --start\tStarts the app
-     --build\tBuilds the app`);
+function usage() {
+  console.log(`${chalk.whiteBright('tool [CMD]')}
+  ${chalk.greenBright('--start')}\tStarts the app
+  ${chalk.greenBright('--build')}\tBuilds the app`);
 }
-
-
-
-

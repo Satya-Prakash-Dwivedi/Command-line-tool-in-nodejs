@@ -2,6 +2,7 @@
   "name": "tool",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "bin": "./bin/index.js",
   "script": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,6 +12,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "arg": "^5.0.2"
+    "arg": "^5.0.2",
+    "chalk": "^5.4.1",
+    "cosmiconfig": "^9.0.0",
+    "pkg-up": "^4.0.0"
   }
 }
